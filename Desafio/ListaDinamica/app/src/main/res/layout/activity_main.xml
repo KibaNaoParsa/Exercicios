@@ -19,7 +19,25 @@
         app:layout_constraintVertical_bias="0.943" />
 
     <TextView
-        android:id="@+id/textVIew"
+        android:id="@+id/textIdade"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:text="Idade:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <TextView
+        android:id="@+id/textTelefone"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:text="Telefone:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="85dp" />
+
+    <TextView
+        android:id="@+id/textNome"
         android:layout_width="111dp"
         android:layout_height="wrap_content"
         android:text="Nome:"
@@ -28,13 +46,42 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editIdade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="154dp" />
+
+    <EditText
+        android:id="@+id/editTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="74dp" />
+
+    <EditText
+        android:id="@+id/editNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="8dp" />
+        tools:layout_editor_absoluteY="6dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cadastrar"
+        android:text="Cadastrar"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="380dp" />
 
 </android.support.constraint.ConstraintLayout>

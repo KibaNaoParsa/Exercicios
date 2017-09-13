@@ -4,7 +4,7 @@ package com.example.alunos.listadinamica.model;
  * Created by alunos on 13/09/17.
  */
 
-public class Pessoa {
+public class Pessoa implements Parceable {
 
     private String nome;
     private String telefone;

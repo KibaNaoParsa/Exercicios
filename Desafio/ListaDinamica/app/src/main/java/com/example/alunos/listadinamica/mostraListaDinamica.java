@@ -1,6 +1,7 @@
 package com.example.alunos.listadinamica;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -20,9 +21,11 @@ public class mostraListaDinamica extends ListActivity {
 //        ListView listview = (ListView) findViewById(R.id.listview);
 
         ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
-        lista.add(new Pessoa("Peter", "3690-1234", 12));
-        lista.add(new Pessoa("John", "3690-1233", 18));
 
-        setListAdapter(new PessoaAdapter(this, lista));
+        Intent it = getIntent();
+        ArrayList array = it.getParcelableArrayListExtra("vetor");
+
+
+        setListAdapter(new PessoaAdapter(this, array));
     }
 }

@@ -1,11 +1,11 @@
-package com.example.alunos.sqlite;
+package com.example.alunos.desafiosqlite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by alunos on 20/09/17.
+ * Created by alunos on 27/09/17.
  */
 
 public class CriaBanco extends SQLiteOpenHelper {
@@ -25,10 +25,10 @@ public class CriaBanco extends SQLiteOpenHelper {
 
     public void onCreate (SQLiteDatabase sqLiteDatabase) {
         String sql = "CREATE TABLE " + TABELA + " ( " +
-                        ID + " integer primary key autoincrement, " +
-                        TITULO + " text, " +
-                        AUTOR + " text, " +
-                        EDITORA + " text " + " ) ";
+                ID + " integer primary key autoincrement, " +
+                TITULO + " text, " +
+                AUTOR + " text, " +
+                EDITORA + " text " + " ) ";
         sqLiteDatabase.execSQL(sql);
 
     }

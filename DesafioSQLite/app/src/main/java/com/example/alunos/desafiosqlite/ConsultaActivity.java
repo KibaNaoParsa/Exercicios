@@ -1,16 +1,17 @@
-package com.example.alunos.sqlite;
+package com.example.alunos.desafiosqlite;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 /**
- * Created by alunos on 20/09/17.
+ * Created by alunos on 27/09/17.
  */
 
 public class ConsultaActivity extends AppCompatActivity {

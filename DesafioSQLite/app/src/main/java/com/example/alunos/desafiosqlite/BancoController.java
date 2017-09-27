@@ -1,14 +1,14 @@
-package com.example.alunos.sqlite;
+package com.example.alunos.desafiosqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import static com.example.alunos.sqlite.CriaBanco.TITULO;
+import static com.example.alunos.desafiosqlite.CriaBanco.TITULO;
 
 /**
- * Created by alunos on 20/09/17.
+ * Created by alunos on 27/09/17.
  */
 
 public class BancoController {
@@ -42,7 +42,7 @@ public class BancoController {
 
     public Cursor carregaDados() {
         Cursor cursor;
-        String[] campos = {banco.ID, banco.TITULO};
+        String[] campos = {banco.ID, TITULO};
         db = banco.getReadableDatabase();
         cursor = db.query(banco.TABELA, campos, null, null, null, null, null, null);
 
@@ -57,7 +57,7 @@ public class BancoController {
 
     public Cursor carregaDadoById(int id) {
         Cursor cursor;
-        String [] campos = {banco.ID, banco.TITULO, banco.AUTOR, banco.EDITORA};
+        String [] campos = {banco.ID, TITULO, banco.AUTOR, banco.EDITORA};
         String where = CriaBanco.ID + "=" + id;
         db = banco.getReadableDatabase();
         cursor = db.query(CriaBanco.TABELA, campos, where, null, null, null, null, null);
@@ -80,7 +80,7 @@ public class BancoController {
         where = CriaBanco.ID + "=" + id;
 
         valores = new ContentValues();
-        valores.put(CriaBanco.TITULO, titulo);
+        valores.put(TITULO, titulo);
         valores.put(CriaBanco.AUTOR, autor);
         valores.put(CriaBanco.EDITORA, editora);
 

@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
         Intent it = new Intent(this, ConsultaActivity.class);
         startActivity(it);
     }
+
+    public void alterar(View v) {
+        Intent it = new Intent(this, AlteraActivity.class);
+        startActivity(it);
+    }
 }

@@ -40,7 +40,7 @@ public class Utils {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Date data;
 
-            JSONObject objArray = array.getJSONObject( 0);
+            JSONObject objArray = array.getJSONObject(0);
             JSONObject obj = objArray.getJSONObject("user");
 
             pessoa.setEmail(obj.getString("email"));

@@ -1,6 +1,8 @@
 package com.example.alunos.mapmarker;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
@@ -9,8 +11,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     Button btnShowLocation;
     Button btnMapa;
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
+        /*try {
             if (ActivityCompat.checkSelfPermission(this, mPermission)
                     != PackageManager.PERMISSION_GRANTED) {
 
@@ -34,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
         btnShowLocation = (Button) findViewById(R.id.btnVerificar);
         txtLatitude = (TextView) findViewById(R.id.txtLatitude);
@@ -70,5 +74,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+
+        AudioManager mAudioManager;
+        int volume;
+
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
+        volume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
+
+
+        MediaPlayer ring = MediaPlayer.create(MainActivity.this, R.raw.exercicio);
+        ring.start();
     }
 }

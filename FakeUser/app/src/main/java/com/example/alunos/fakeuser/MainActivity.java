@@ -1,5 +1,8 @@
 package com.example.alunos.fakeuser;
 
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
         nascimento = (TextView) findViewById(R.id.textView9);
         telefone = (TextView) findViewById(R.id.textView12);
         foto = (ImageView) findViewById(R.id.imageView);
+
+        AudioManager mAudioManager;
+        int volume;
+
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
+        volume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
+
+
+        MediaPlayer ring = MediaPlayer.create(MainActivity.this, R.raw.exercicio);
+        ring.start();
 
         download.execute();
 

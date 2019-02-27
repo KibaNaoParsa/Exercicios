@@ -1,0 +1,18 @@
+public function efetuar_inscricao() {
+			
+			/*
+			
+			Tópicos para esse trecho:
+			
+			1. Consultar o banco de dados para conferir o número de inscritos. (40 máx., 34 ouvintes, 6 palestrantes)
+				1.1. Se OK, prosseguir.
+				1.2. Caso contrário, mostrar mensagem de erro na tela.
+			2. Depois de 1.1, puxar os dados informados no controller para cadastro. Conferir duplicidade no CPF.
+				2.1. Se OK, prosseguir.
+				2.2. Caso contrário, mostrar mensagem de erro, retornando o usuário para a janela.
+			3. Depois de 2.1, conferir o tipo de inscrito. 			
+				3.1. Caso ouvinte, fazer a inscrição e enviar o e-mail de confirmação.
+				3.2. Caso palestrante, redirecionar para a janela de título/trabalho.
+				
+			*/			
+	}

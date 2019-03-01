@@ -48,7 +48,7 @@
 									echo form_radio("evento[]", $e->idEVENTO, FALSE).
                         	form_label($e->NOME, "txt_li2").br();
 								}
-
+								echo "</div>";
 
 								echo form_submit("btn_enviar", "Entrar", "login loginmodal-submit").form_close();					
 							

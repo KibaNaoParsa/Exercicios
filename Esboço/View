@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#login-modal">Inscreva-se</button>
+            <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#login-modal">Inscreva-se</button>
             <div class="modal fade" id="login-modal">
 					<div class="modal-dialog">
 						<div class="loginmodal-container" style="max-width: 500px">
@@ -36,13 +36,21 @@
 								form_input('txt_cpf').br().
 								form_label("E-mail: ", "txt_email").
 								form_input('txt_email').br().br().
+								
 								"<div id='radio' style='float: left;'><b>"."Você deseja participar como:"."</b>".br().
 								form_radio("tipo[]", 0, FALSE).
                         form_label("Ouvinte ", "txt_li").br().
                         form_radio("tipo[]", 1, FALSE).
-                        form_label("Apresentador ", "txt_li").br()."</div>".
-																
-								form_submit("btn_enviar", "Entrar", "login loginmodal-submit").form_close();					
+                        form_label("Apresentador ", "txt_li").br()."</div>".br().
+								"<div id='evento' style='float: left;'><b>"."De qual evento você deseja participar:"."</b>".br();
+								
+								foreach($EVENTO as $e) {
+									echo form_radio("evento[]", $e->idEVENTO, FALSE).
+                        	form_label($e->NOME, "txt_li2").br();
+								}
+
+
+								echo form_submit("btn_enviar", "Entrar", "login loginmodal-submit").form_close();					
 							
 							
 							?>

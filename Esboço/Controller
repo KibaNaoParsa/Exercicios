@@ -66,18 +66,139 @@
 			
 			if(count($conf) > 0) {
 
-				echo '<script type="text/javascript">confirm("Há alguma pergunta cadastrada com essa dimensão. Apague a pergunta primeiro.");</script>';	
+				// Caso o CPF esteja duplicado, a mensagem de erro será exibida.
+				
+				echo '<script type="text/javascript">confirm("O CPF informado já foi cadastrado.");</script>';	
 				$this->index();		
 
 			} 	else {		
-				
-				echo '<script type="text/javascript">confirm("q delicia cara");</script>';	
+			
+				// Prosseguindo caso tudo esteja OK.
+							 	
+			 	$this->db->select("EVENTO.numouvintes, EVENTO.numtrabalhos, EVENTO.numtotal");
+			 	$this->db->from("EVENTO");
+			 	$this->db->where("EVENTO.idEVENTO", $data['idEVENTO']);
+				$total = $this->db->get()->result();
+							 	
+			 	if ($data['TIPO'] == 0) {
+			 		
+			 		// Caso o aplicante seja ouvinte, conferir o número de inscritos para deferir/indeferir.
 
-			}
+					foreach ($total as $t) {
+						if ($t->numouvintes < 34) {
+							
+							$data['SITUACAO'] = 0;
+							
+							$this->db->insert('INSCRITO', $data);
+						
+							$dat['numouvintes'] = $t->numouvintes;
+							$dat['numouvintes'] += 1;
+							$dat['numtotal'] = $t->numtotal;
+							$dat['numtotal'] += 1;
+			
+							$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
+							$this->db->update('EVENTO', $dat);																		
+							
+							echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
+							$this->index();
+							// Enviar e-mail de confirmação
+							
+							
+							
+																			
+						
+						} else {
+						
+							$data['SITUACAO'] = 1;
+							
+							$this->db->insert('INSCRITO', $data);
+									
+							echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido.");</script>';	
+							$this->index();
+
+
+							// Mandar e-mail de limite						
+
+						
+						}					
+					}			 		
+			 		
+			 	} else if ($data['TIPO'] == 1) {
+			 		
+					// Enviar para tela de trabalhos
+					$data['url'] = base_url();
+					$this->parser->parse('ajax', $data);
+					$this->parser->parse('projeto', $data);								 		
+
+			 		/*
+					foreach ($total as $t) {
+						if ($t->numtrabalhos < 6) {
+							
+							// Enviar para tela onde serão inseridos título e trabalho
+													
+						} else {
+												
+						}					
+					}*/
+			 	
+			 	}
+
+			}	
 	
-	
-	
-	
-	
+	}
+
+
+
+	public function inscricao_trabalho() {
+
+		$data['NOME'] = $this->input->post('nome');
+		$data['INSTITUICAO'] = $this->input->post('instituicao');
+		$data['EMAIL'] = $this->input->post('email');
+		$data['CPF'] = $this->input->post('CPF');
+		$data['TITULO'] = $this->input->post('txt_titulo');
+		$data['ARTIGO'] = $this->input->post('txt_artigo');
+		$data['idEVENTO'] = $this->input->post('idEVENTO');
+		$data['TIPO'] = 1;
+		
+		$this->db->select("EVENTO.numtrabalhos, EVENTO.numtotal");
+	 	$this->db->from("EVENTO");
+	 	$this->db->where("EVENTO.idEVENTO", $data['idEVENTO']);
+		$total = $this->db->get()->result();					
+		
+		foreach ($total as $t) {
+
+			if ($t->numtrabalhos < 6) {
+							
+				$data['SITUACAO'] = 0;
+							
+				$this->db->insert('INSCRITO', $data);
+						
+				$dat['numtrabalhos'] = $t->numtrabalhos;
+				$dat['numtrabalhos'] += 1;
+				$dat['numtotal'] = $t->numtotal;
+				$dat['numtotal'] += 1;
+			
+				$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
+				$this->db->update('EVENTO', $dat);																		
+							
+				echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
+				$this->index();
+				// Enviar e-mail de confirmação					
+						
+			} else {
+						
+				$data['SITUACAO'] = 1;
+							
+				$this->db->insert('INSCRITO', $data);					
+						
+				echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido.");</script>';	
+				$this->index();
+
+				// Mandar e-mail de limite						
+
+						
+			}					
+		
+		}
 	
 	}

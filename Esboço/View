@@ -1,4 +1,4 @@
-            <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#login-modal">Inscreva-se</button>
+                    <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#login-modal">Inscreva-se</button>
             <div class="modal fade" id="login-modal">
 					<div class="modal-dialog">
 						<div class="loginmodal-container" style="max-width: 500px">
@@ -58,3 +58,54 @@
 						</div>
 					</div>
 				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								echo $NOME.', insira os detalhes de seu projeto.'.br();
+								
+								$atributos = array('name'=>'formulario_login', 'id'=>'formulario_login');
+								$btn = array('name'=>'btn_cadastrar', 'id'=>'botao1', 'class'=>'btn btn-warning');								
+								echo form_open('login/inscricao_trabalho', $atributos).								
+								form_hidden('nome', $NOME).								
+								form_hidden('CPF', $CPF).
+								form_hidden('instituicao', $INSTITUICAO).
+								form_hidden('email', $EMAIL).
+								form_hidden('idEVENTO', $idEVENTO).	
+																
+								"<b>".form_label("Título do projeto: ", "txt_titulo")."</b>".
+								form_input('txt_titulo').br().
+								"<b>".form_label("Artigo: ", "txt_artigo")."</b>".br().
+								form_textarea('txt_artigo').br();
+																
+								echo form_submit("btn_enviar", "Cadastrar", $btn).form_close();
